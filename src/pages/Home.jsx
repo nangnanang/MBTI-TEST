@@ -15,6 +15,7 @@ const Home = () => {
         "나의 성격이 다른 사람과 어떻게 다른지 알아보고 원활한 의사소통을 도모해 보세요",
     },
   ];
+
   return (
     <div className="w-3/4 text-center">
       <p className="text-5xl m-12">무료 성격 테스트</p>

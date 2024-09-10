@@ -1,6 +1,7 @@
 import axios from "axios";
-// 왜 이 변수는 써먹을 수가 없는가...
-const API_URL = "http://localhost:4000/testResults";
+
+// 환경 변수 앞에 VITE를 꼭 붙여야 한다.
+const API_URL = import.meta.env.VITE_TEST_RESULT_API_URL;
 
 // 결과 데이터 가져오기
 export const getTestResults = async () => {
