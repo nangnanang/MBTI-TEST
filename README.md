@@ -9,5 +9,11 @@ MBTI테스트를 하여 자신의 성격 유형을 알아볼 수 있는 사이�
 -MBTI 테스트 결과 확인
 -내 테스트 결과 공개하기/비공개하기
 
+실행
+터미널 2개에 각각 아래 명령어 입력
+yarn json-server --watch ./src/api/db.json --port 4000
+yarn dev
+
+
 테스트 결과 api 배포예정
 https://cheerful-opposite-scourge.glitch.me
