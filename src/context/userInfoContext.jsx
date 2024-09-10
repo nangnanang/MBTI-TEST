@@ -6,7 +6,6 @@ export const userInfoContext = createContext();
 const UserInfoContextProvider = ({ children }) => {
   const [token, setToken] = useState(sessionStorage.getItem("loginToken"));
   const [userInfo, setUserInfo] = useState();
-  console.log(userInfo);
 
   useEffect(() => {
     if (!token) {

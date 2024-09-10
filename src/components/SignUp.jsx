@@ -12,7 +12,6 @@ const SignUp = () => {
   const signupHandler = async (e) => {
     e.preventDefault();
     const { data } = await register({ id, password, nickname });
-    console.log("회원가입", data);
 
     if (data.success) {
       alert("회원가입되었습니다. 로그인해주세요.");
