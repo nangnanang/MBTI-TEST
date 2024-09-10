@@ -22,7 +22,7 @@ const Test = () => {
     await createTestResult(resultData);
   };
 
-  return <TestForm onSubmit={handleTestSubmit} />;
+  return <TestForm handleTestSubmit={handleTestSubmit} />;
 };
 
 export default Test;

@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { updateUser } from "../api/auth";
 import { userInfoContext } from "../context/userInfoContext";
-
 const Mypage = () => {
   const { token, userInfo } = useContext(userInfoContext);
   const [nickname, setNickname] = useState("");
   const [newNickName, setNewNickName] = useState("");
+  // const queryClient = useQueryClient();
 
   useEffect(() => {
     if (userInfo) {

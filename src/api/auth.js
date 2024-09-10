@@ -1,8 +1,5 @@
 import axios from "axios";
 
-// kim@test.com       123123
-// kimkim@test.com    kim123
-
 const API_URL = "https://moneyfulpublicpolicy.co.kr";
 
 // 회원가입
