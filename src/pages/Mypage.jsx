@@ -10,6 +10,8 @@ const Mypage = () => {
   useEffect(() => {
     if (userInfo) {
       setNickname(userInfo.nickname);
+    } else {
+      return;
     }
   }, [userInfo]);
 
