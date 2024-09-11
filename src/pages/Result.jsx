@@ -1,9 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import {
-  deleteTestResult,
-  getTestResults,
-  updateTestResultVisibility,
-} from "../api/testResults";
+import { getTestResults } from "../api/testResults";
 import { useContext } from "react";
 import { userInfoContext } from "../context/userInfoContext";
 import { mbti } from "../data/mbti";
@@ -30,7 +26,7 @@ const Result = () => {
     <div className="flex flex-col p-10 gap-y-10">
       <p className="text-5xl">테스트 결과</p>
       {data
-        ?.filter((result) => result.visibility || myResult(result.id))
+        ?.filter((result) => result.visibility || myResult(result.userId))
         .map((result) => {
           return (
             <div
@@ -45,7 +41,7 @@ const Result = () => {
                 <p>{result.date.slice(0, 10)}</p>
               </div>
               <p>{mbti.find((a) => a.type === result.result).detail}</p>
-              {myResult(result.id) ? (
+              {myResult(result.userId) ? (
                 <ResultFormButtons result={result} />
               ) : (
                 <></>
