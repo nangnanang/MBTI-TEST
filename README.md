@@ -8,3 +8,8 @@ MBTI테스트를 하여 자신의 성격 유형을 알아볼 수 있는 사이�
 -MBTI 테스트
 -MBTI 테스트 결과 확인
 -내 테스트 결과 공개하기/비공개하기
+
+배포
+https://nangnanang.github.io/MBTI-TEST/
+
+배포한 API가 맛이 가서 다시 json-server 이용
