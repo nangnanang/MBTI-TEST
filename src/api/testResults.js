@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // 환경 변수 앞에 VITE를 꼭 붙여야 한다.
-const API_URL = import.meta.env.VITE_TEST_RESULT_API_URL;
+export const API_URL = import.meta.env.VITE_TEST_RESULT_API_URL;
 
 // 결과 데이터 가져오기
 export const getTestResults = async () => {
@@ -23,6 +23,5 @@ export const deleteTestResult = async (id) => {
 
 // 결과 데이터 업데이트하기
 export const updateTestResultVisibility = async (id, updateData) => {
-  const response = await axios.patch(`${API_URL}/${id}`, updateData);
-  return response;
+  await axios.patch(`${API_URL}/${id}`, updateData);
 };

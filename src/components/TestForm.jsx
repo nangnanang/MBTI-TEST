@@ -5,7 +5,7 @@ import { mbti } from "../data/mbti";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 
-const TestForm = ({ onSubmit }) => {
+const TestForm = ({ handleTestSubmit }) => {
   const [answers, setAnswers] = useState(Array(questions.length).fill(null));
   const [result, setResult] = useState();
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const TestForm = ({ onSubmit }) => {
   // 테스트 답안 결과 데이터로 보내기
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await onSubmit(answers);
+    await handleTestSubmit(answers);
 
     setResult(calculateMBTI(answers));
   };

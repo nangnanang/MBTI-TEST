@@ -11,7 +11,7 @@ const Test = () => {
     // mbti테스트 결과 도출
     const result = calculateMBTI(answers);
     const resultData = {
-      id: userInfo.id,
+      userId: userInfo.id,
       nickname: userInfo.nickname,
       result,
       answers,
@@ -22,7 +22,7 @@ const Test = () => {
     await createTestResult(resultData);
   };
 
-  return <TestForm onSubmit={handleTestSubmit} />;
+  return <TestForm handleTestSubmit={handleTestSubmit} />;
 };
 
 export default Test;
