@@ -1,14 +1,16 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Button from "./Button";
-import { API_URL, deleteTestResult } from "../api/testResults";
-import axios from "axios";
+import {
+  deleteTestResult,
+  updateTestResultVisibility,
+} from "../api/testResults";
 
 const ResultFormButtons = ({ result }) => {
   const queryClient = useQueryClient();
   // 결과 데이터 업데이트 함수
   const updateMutation = useMutation({
-    mutationFn: async (updateData) => {
-      await axios.patch(`${API_URL}/${result.id}`, updateData);
+    mutationFn: ({ id, visibility }) => {
+      updateTestResultVisibility(id, { visibility });
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["result"]);
@@ -35,20 +37,22 @@ const ResultFormButtons = ({ result }) => {
       {result.visibility ? (
         <Button
           name={"비공개로 전환"}
-          // onClick={() => handleUpdate(result.id, false)}
-          onClick={() => updateMutation.mutate({ visibility: false })}
+          onClick={() =>
+            updateMutation.mutate({ id: result.id, visibility: false })
+          }
         />
       ) : (
         <Button
           name={"공개로 전환"}
-          onClick={() => updateMutation.mutate({ visibility: true })}
+          onClick={() =>
+            updateMutation.mutate({ id: result.id, visibility: true })
+          }
         />
       )}
       <Button
         name={"삭제하기"}
         onClick={() => deleteMutaion.mutate(result.id)}
       />
-      {/* <Button name={"삭제하기"} onClick={() => handleDelete(result.id)} /> */}
     </div>
   );
 };

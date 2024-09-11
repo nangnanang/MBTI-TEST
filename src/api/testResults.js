@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // 환경 변수 앞에 VITE를 꼭 붙여야 한다.
-export const API_URL = import.meta.env.VITE_TEST_RESULT_API_URL;
+const API_URL = import.meta.env.VITE_TEST_RESULT_API_URL;
 
 // 결과 데이터 가져오기
 export const getTestResults = async () => {
