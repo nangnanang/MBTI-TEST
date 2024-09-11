@@ -4,16 +4,25 @@ import { useNavigate } from "react-router-dom";
 import { userInfoContext } from "../context/userInfoContext";
 
 const SignIn = () => {
-  const { setToken } = useContext(userInfoContext);
-  const [id, setId] = useState("");
-  const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const { setToken } = useContext(userInfoContext);
+  const [formData, setFormData] = useState({
+    id: "",
+    password: "",
+  });
+
+  const changeHandler = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const signinHandler = async (e) => {
     e.preventDefault();
 
     // JWT로 로그인
-    const { data } = await login({ id, password });
+    const { data } = await login(formData);
 
     // 로그인 하면 로그인 토큰 저장
     if (data.success) {
@@ -30,15 +39,17 @@ const SignIn = () => {
       <form className="w-full">
         <p className="text-3xl py-4">ID</p>
         <input
+          name="id"
+          onChange={changeHandler}
           className="text-xl p-3 w-full"
-          onChange={(e) => setId(e.target.value)}
           placeholder="이메일을 입력하시오"
         />
         <p className="text-3xl py-4">비밀번호</p>
         <input
+          name="password"
+          onChange={changeHandler}
           type="password"
           className="text-xl p-3 w-full"
-          onChange={(e) => setPassword(e.target.value)}
           placeholder="비밀번호을 입력하시오"
         />
         <button

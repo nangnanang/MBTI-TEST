@@ -1,19 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { updateUser } from "../api/auth";
 import { userInfoContext } from "../context/userInfoContext";
 const Mypage = () => {
-  const { token, userInfo } = useContext(userInfoContext);
-  const [nickname, setNickname] = useState("");
+  const { token, userInfo, setUserInfo } = useContext(userInfoContext);
   const [newNickName, setNewNickName] = useState("");
-  // const queryClient = useQueryClient();
-
-  useEffect(() => {
-    if (userInfo) {
-      setNickname(userInfo.nickname);
-    } else {
-      return;
-    }
-  }, [userInfo]);
 
   const updateHandler = async (e) => {
     e.preventDefault();
@@ -25,7 +15,10 @@ const Mypage = () => {
 
     // 리렌더링
     if (data.success) {
-      setNickname(newNickName);
+      setUserInfo({
+        ...userInfo,
+        nickname: data.nickname,
+      });
       setNewNickName("");
       alert("닉네임이 변경되었습니다.");
     }
@@ -34,9 +27,9 @@ const Mypage = () => {
   return (
     <div className=" w-2/5 text-center border-solid border-4 border-red-200 rounded-xl bg-sky-200">
       <p className="text-5xl m-12">프로필 수정</p>
-      {nickname ? (
+      {userInfo ? (
         <>
-          <p className="text-3xl p-3">닉네임: {nickname}</p>
+          <p className="text-3xl p-3">닉네임: {userInfo.nickname}</p>
         </>
       ) : (
         <div>불러오는 중</div>
