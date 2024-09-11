@@ -13,8 +13,8 @@ const ResultFormButtons = ({ result }) => {
       updateTestResultVisibility(id, { visibility });
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(["result"]);
       alert("공개 여부가 변경되었습니다.");
+      queryClient.invalidateQueries(["result"]);
     },
     onError: () => {
       alert("업데이트 실패");
@@ -25,8 +25,8 @@ const ResultFormButtons = ({ result }) => {
   const deleteMutaion = useMutation({
     mutationFn: deleteTestResult,
     onSuccess: () => {
-      queryClient.invalidateQueries(["result"]);
       alert("삭제 되었습니다.");
+      queryClient.invalidateQueries(["result"]);
     },
     onError: () => {
       alert("삭제 실패 실패");

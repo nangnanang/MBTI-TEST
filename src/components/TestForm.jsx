@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 const TestForm = ({ handleTestSubmit }) => {
   const [answers, setAnswers] = useState(Array(questions.length).fill(null));
   const [result, setResult] = useState();
+  const [isLoading, changeLoading] = useState(false);
   const navigate = useNavigate();
 
   // 테스트 답안 저장하기
@@ -20,8 +21,11 @@ const TestForm = ({ handleTestSubmit }) => {
   // 테스트 답안 결과 데이터로 보내기
   const handleSubmit = async (e) => {
     e.preventDefault();
+    changeLoading(true);
     await handleTestSubmit(answers);
+    changeLoading(false);
 
+    // 단일 테스트 결과를 확인하기 위한 상태값 관리
     setResult(calculateMBTI(answers));
   };
 
@@ -72,7 +76,13 @@ const TestForm = ({ handleTestSubmit }) => {
               </div>
             );
           })}
-          <button type="submit">제출하기</button>
+          <div className="flex flex-col justify-center w-full">
+            {isLoading ? (
+              <div>제출중</div>
+            ) : (
+              <Button type="submit" name={"제출하기"} />
+            )}
+          </div>
         </form>
       )}
     </>
